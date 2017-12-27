@@ -23,7 +23,6 @@ public class RepoRepositoryImpl implements RepoRepository {
 
     @Override
     public Observable<List<RepoEntity>> getRepos() {
-        return Observable.concat(repoDataSource.getRepos()
-                .onErrorResumeNext(Observable.empty()).subscribeOn(Schedulers.io()));
+        return repoDataSource.getRepos();
     }
 }
