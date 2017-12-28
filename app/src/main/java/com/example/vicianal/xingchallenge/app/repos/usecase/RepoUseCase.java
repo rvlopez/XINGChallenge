@@ -8,6 +8,8 @@ import com.example.vicianal.xingchallenge.entity.RepoEntity;
 import java.util.List;
 import java.util.concurrent.Executor;
 
+import javax.inject.Inject;
+
 import rx.Observable;
 import rx.Subscriber;
 
@@ -15,7 +17,7 @@ public class RepoUseCase extends Interactor<List<RepoEntity>> {
 
     private final RepoRepository repoRepository;
 
-    public RepoUseCase(Executor executor, MainThread mainThread, RepoRepository repoRepository) {
+    @Inject public RepoUseCase(Executor executor, MainThread mainThread, RepoRepository repoRepository) {
         super(executor, mainThread);
 
         if (repoRepository == null) {

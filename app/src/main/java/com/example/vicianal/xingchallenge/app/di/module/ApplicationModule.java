@@ -32,16 +32,6 @@ public class ApplicationModule {
         this.applicationContext = applicationContext.getApplicationContext();
     }
 
-    @Provides
-    public Interactor<List<RepoEntity>> provideRepoUseCase(RepoUseCase repoUseCase) {
-        return repoUseCase;
-    }
-
-    @Provides
-    public RepoPresenter provideRepoPresenter(RepoUseCase repoUseCase) {
-        return new RepoPresenter(repoUseCase);
-    }
-
     @Provides @Singleton
     public Executor provideExecutor() {
         return new ThreadExecutor();

@@ -2,6 +2,7 @@ package com.example.vicianal.xingchallenge;
 
 import android.app.Application;
 import com.example.vicianal.xingchallenge.app.di.component.ApplicationComponent;
+import com.example.vicianal.xingchallenge.app.di.component.DaggerApplicationComponent;
 import com.example.vicianal.xingchallenge.app.di.module.ApplicationModule;
 import com.example.vicianal.xingchallenge.core.di.HasComponent;
 

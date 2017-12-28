@@ -1,6 +1,8 @@
 package com.example.vicianal.xingchallenge.app.repos.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -51,7 +53,12 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
                 context.getString(R.string.item_description), repoEntity.getDescription()));
 
         holder.ownerLogin.setText(String.format(
-                context.getString(R.string.item_description), repoEntity.getDescription()));
+                context.getString(R.string.item_owner_login), repoEntity.getOwner().getLogin()));
+
+        holder.itemView.setOnLongClickListener(view -> {
+            showDialog(context);
+            return true;
+        });
     }
 
     @Override
@@ -64,6 +71,25 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
         notifyDataSetChanged();
     }
 
+    private void showDialog(Context context) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        dialogBuilder
+                .setTitle(context.getString(R.string.alert_dialog_title))
+                .setMessage(R.string.alert_dialog_message)
+                .setPositiveButton(R.string.alert_dialog_repository_html_url, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .setPositiveButton(R.string.alert_dialog_owner_html_url, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .show();
+    }
 
     static class RepoViewHolder extends RecyclerView.ViewHolder {
 

@@ -84,7 +84,8 @@ public class RepoActivity extends RootActivity implements RepoView, HasComponent
 
     @Override
     protected void initializeInjector() {
-        repoComponent = ((RepoApplication) getApplication()).getComponent().repoComponent(new RepoModule());
+        repoComponent = ((RepoApplication) getApplication())
+                .getComponent().repoComponent(new RepoModule());
         repoComponent.inject(this);
 
     }
