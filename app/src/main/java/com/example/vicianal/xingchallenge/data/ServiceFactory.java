@@ -19,11 +19,10 @@ public class ServiceFactory {
    * Creates a retrofit service
    *
    * @param clazz Java interface of the retrofit service
-   * @param baseUrl REST endpoint url
    */
 
-  public static <T> T createRetrofitService(final Class<T> clazz, final String baseUrl) {
-    final Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl)
+  public static <T> T createRetrofitService(final Class<T> clazz) {
+    final Retrofit retrofit = new Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
         .client(createBaseClient())

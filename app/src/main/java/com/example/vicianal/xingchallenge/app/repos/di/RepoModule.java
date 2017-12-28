@@ -13,11 +13,13 @@ import dagger.Provides;
 @Module
 public class RepoModule {
 
-    @Provides public Interactor<List<RepoEntity>> provideRepoUseCase(RepoUseCase repoUseCase) {
+    @Provides
+    public Interactor<List<RepoEntity>> provideRepoUseCase(RepoUseCase repoUseCase) {
         return repoUseCase;
     }
 
-    @Provides public RepoPresenter provideRepoPresenter(RepoUseCase repoUseCase) {
+    @Provides
+    public RepoPresenter provideRepoPresenter(RepoUseCase repoUseCase) {
         return new RepoPresenter(repoUseCase);
     }
 }
