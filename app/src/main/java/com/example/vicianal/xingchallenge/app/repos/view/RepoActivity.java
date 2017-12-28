@@ -104,6 +104,7 @@ public class RepoActivity extends RootActivity implements RepoView,
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(repoAdapter);
+        repoAdapter.setListener(this);
     }
 
     @Override
