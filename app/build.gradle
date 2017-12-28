@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-def supportVersion = '23.4.0'
+def supportVersion = '27.0.2'
 def rxJavaVersion = '1.2.7'
 def rxAndroidVersion = '1.2.1'
 def daggerVersion = '2.8'
@@ -10,11 +10,13 @@ def gsonVersion = '2.8.0'
 def butterKnifeVersion = '8.8.1'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 27
+    buildToolsVersion "${supportVersion}"
+
     defaultConfig {
         applicationId "com.example.vicianal.xingchallenge"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -41,21 +43,16 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation "com.android.support:appcompat-v7:${supportVersion}"
     implementation "com.android.support:recyclerview-v7:${supportVersion}"
-
     implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
     implementation "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
-
     implementation "com.google.dagger:dagger:${daggerVersion}"
-    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
-
     implementation "io.reactivex:rxjava:${rxJavaVersion}"
     implementation "io.reactivex:rxandroid:${rxAndroidVersion}"
-
     implementation "com.google.code.gson:gson:${gsonVersion}"
     implementation "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}"
     implementation "com.squareup.okhttp3:okhttp:${okHttpVersion}"
-
     implementation "com.jakewharton:butterknife:${butterKnifeVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
 }
