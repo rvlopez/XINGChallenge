@@ -9,8 +9,6 @@ import rx.Observable;
 
 public interface RepoApi {
 
-    String BASE_URL = "https://api.github.com/users/xing/repos";
-
-    @GET(BASE_URL)
+    @GET(RepoApiConstants.BASE_URL)
     Observable<List<RepoResponseDto>> getRepos();
 }
