@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">XingChallenge</string>
+
+    <!-- Repo item view -->
+    <string name="item_repo_name">Repository name: %1$s</string>
+    <string name="item_description">Description: %1$s</string>
+    <string name="item_owner_login">Owner login: %1$s</string>
+
+    <!-- Error messages -->
+    <string name="error_message">Oops! Something went wrong :(</string>
+    <string name="no_results_message">Results not found!</string>
+    <string name="alert_dialog_title">Select URL source</string>
+    <string name="alert_dialog_message">Please, select the source to open the repository</string>
+    <string name="alert_dialog_repository_html_url">Repository</string>
+    <string name="alert_dialog_owner_html_url">Owner</string>
 </resources>
