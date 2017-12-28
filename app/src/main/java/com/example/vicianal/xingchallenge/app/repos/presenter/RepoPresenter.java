@@ -42,7 +42,8 @@ public class RepoPresenter extends Presenter<RepoView> {
 
             @Override
             public void onError(Throwable e) {
-
+                view.hideProgress();
+                view.showError();
             }
 
             @Override

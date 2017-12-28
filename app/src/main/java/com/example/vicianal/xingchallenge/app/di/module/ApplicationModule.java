@@ -10,6 +10,7 @@ import com.example.vicianal.xingchallenge.core.executor.ThreadExecutor;
 import com.example.vicianal.xingchallenge.core.interactor.Interactor;
 import com.example.vicianal.xingchallenge.data.ServiceFactory;
 import com.example.vicianal.xingchallenge.data.datasource.RepoApi;
+import com.example.vicianal.xingchallenge.data.datasource.RepoApiConstants;
 import com.example.vicianal.xingchallenge.data.datasource.RepoDataSource;
 import com.example.vicianal.xingchallenge.data.repository.RepoRepository;
 import com.example.vicianal.xingchallenge.data.repository.RepoRepositoryImpl;
@@ -49,7 +50,7 @@ public class ApplicationModule {
 
     @Provides @Singleton
     public RepoApi provideRepoApi() {
-        return ServiceFactory.createRetrofitService(RepoApi.class);
+        return ServiceFactory.createRetrofitService(RepoApi.class, RepoApiConstants.BASE_URL);
     }
 
     @Provides @Singleton

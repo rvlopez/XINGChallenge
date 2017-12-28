@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.vicianal.xingchallenge.R;
 import com.example.vicianal.xingchallenge.entity.RepoEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -67,7 +68,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
     }
 
     public void setItems(List<RepoEntity> items) {
-        this.items.addAll(items);
+        this.items = items;
         notifyDataSetChanged();
     }
 

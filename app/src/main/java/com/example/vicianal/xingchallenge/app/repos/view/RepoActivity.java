@@ -92,6 +92,7 @@ public class RepoActivity extends RootActivity implements RepoView, HasComponent
 
     @Override
     protected void initializePresenter() {
+        repoPresenter.setView(this);
         repoPresenter.loadRepos();
     }
 
