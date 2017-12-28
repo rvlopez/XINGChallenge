@@ -9,6 +9,8 @@ import rx.Observable;
 
 public interface RepoApi {
 
-    @GET(RepoApiConstants.BASE_URL)
+    String REPO = "repos";
+
+    @GET(RepoApiConstants.BASE_URL + REPO)
     Observable<List<RepoResponseDto>> getRepos();
 }
