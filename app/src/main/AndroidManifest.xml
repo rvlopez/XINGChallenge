@@ -11,9 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="com.example.vicianal.xingchallenge.RepoApplication" >
-        <activity android:name=".app.MainActivity">
-
-        </activity>
         <activity android:name=".app.repos.view.RepoActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
