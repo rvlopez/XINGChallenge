@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.example.vicianal.xingchallenge.R;
 import com.example.vicianal.xingchallenge.entity.RepoEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,6 +23,7 @@ import butterknife.ButterKnife;
 public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder> {
 
     private List<RepoEntity> items;
+    private OnItemClickedListener onItemClickedListener;
 
     @Inject
     public RepoAdapter() {
@@ -57,7 +57,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
                 context.getString(R.string.item_owner_login), repoEntity.getOwner().getLogin()));
 
         holder.itemView.setOnLongClickListener(view -> {
-            showDialog(context);
+            showDialog(context, repoEntity);
             return true;
         });
     }
@@ -72,22 +72,22 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
         notifyDataSetChanged();
     }
 
-    private void showDialog(Context context) {
+    public void setListener(OnItemClickedListener onItemClickedListener) {
+        this.onItemClickedListener = onItemClickedListener;
+    }
+
+    private void showDialog(Context context, RepoEntity repoEntity) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
         dialogBuilder
                 .setTitle(context.getString(R.string.alert_dialog_title))
                 .setMessage(R.string.alert_dialog_message)
-                .setPositiveButton(R.string.alert_dialog_repository_html_url, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
+                .setPositiveButton(R.string.alert_dialog_repository_html_url, (dialogInterface, i) -> {
+                    String url = repoEntity.getHtmlUrl();
+                    onItemClickedListener.openToBrowser(url);
                 })
-                .setPositiveButton(R.string.alert_dialog_owner_html_url, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
+                .setNegativeButton(R.string.alert_dialog_owner_html_url, (dialogInterface, i) -> {
+                    String url = repoEntity.getOwner().getHtmlUrl();
+                    onItemClickedListener.openToBrowser(url);
                 })
                 .show();
     }

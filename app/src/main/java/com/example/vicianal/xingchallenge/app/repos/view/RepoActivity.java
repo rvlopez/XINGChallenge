@@ -1,5 +1,7 @@
 package com.example.vicianal.xingchallenge.app.repos.view;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.ContentLoadingProgressBar;
@@ -10,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.vicianal.xingchallenge.R;
 import com.example.vicianal.xingchallenge.RepoApplication;
-import com.example.vicianal.xingchallenge.app.di.component.ApplicationComponent;
+import com.example.vicianal.xingchallenge.app.repos.adapter.OnItemClickedListener;
 import com.example.vicianal.xingchallenge.app.repos.adapter.RepoAdapter;
 import com.example.vicianal.xingchallenge.app.repos.di.RepoComponent;
 import com.example.vicianal.xingchallenge.app.repos.di.RepoModule;
@@ -25,7 +27,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 
-public class RepoActivity extends RootActivity implements RepoView, HasComponent<RepoComponent> {
+public class RepoActivity extends RootActivity implements RepoView,
+        HasComponent<RepoComponent>, OnItemClickedListener {
 
     private RepoComponent repoComponent;
 
@@ -106,5 +109,10 @@ public class RepoActivity extends RootActivity implements RepoView, HasComponent
     @Override
     public RepoComponent getComponent() {
         return repoComponent;
+    }
+
+    @Override
+    public void openToBrowser(String url) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 }
